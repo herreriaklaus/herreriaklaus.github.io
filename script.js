@@ -1,0 +1,5 @@
+const filters=document.querySelectorAll('.filter');const cards=document.querySelectorAll('.project-card');
+filters.forEach(filter=>filter.addEventListener('click',()=>{filters.forEach(f=>f.classList.remove('active'));filter.classList.add('active');const value=filter.dataset.filter;cards.forEach(card=>card.classList.toggle('hidden',value!=='todos'&&card.dataset.category!==value));}));
+const lightbox=document.querySelector('.lightbox');const lightboxImg=lightbox.querySelector('img');const close=lightbox.querySelector('.close-lightbox');
+document.querySelectorAll('.project-image').forEach(button=>button.addEventListener('click',()=>{lightboxImg.src=button.dataset.full;lightboxImg.alt=button.querySelector('img').alt;lightbox.classList.add('open');lightbox.setAttribute('aria-hidden','false')}));
+function closeLightbox(){lightbox.classList.remove('open');lightbox.setAttribute('aria-hidden','true');lightboxImg.src=''}close.addEventListener('click',closeLightbox);lightbox.addEventListener('click',e=>{if(e.target===lightbox)closeLightbox()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox()});
